@@ -82,21 +82,58 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
+    .announcement-label {
+      line-height: 1.35;
+    }
+
     .countdown {
-      direction: ltr;
-      display: inline-flex;
+      direction: rtl;
+      display: grid;
+      grid-template-columns: auto repeat(4, minmax(48px, 1fr));
       align-items: center;
-      justify-content: center;
-      min-width: 178px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.24);
+      gap: 6px;
+      min-width: 330px;
+      padding: 6px 8px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.26);
       background: rgba(255,255,255,.13);
       font-variant-numeric: tabular-nums;
+    }
+
+    .countdown-prefix {
+      padding-inline: 4px 2px;
+      font-size: .82rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .time-unit {
+      min-width: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 5px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.11);
+      line-height: 1.05;
+    }
+
+    .time-unit b {
+      direction: ltr;
+      font-size: 1rem;
+      font-weight: 950;
+    }
+
+    .time-unit small {
+      margin-top: 3px;
+      font-size: .66rem;
+      font-weight: 750;
+      opacity: .9;
     }
 
     #header {
@@ -251,15 +288,33 @@
       margin: 0;
       max-width: 760px;
       color: var(--wine-dark);
-      font-size: clamp(2.7rem, 5.8vw, 5rem);
-      line-height: 1.02;
-      letter-spacing: -.045em;
+      line-height: 1.04;
+      letter-spacing: -.035em;
     }
 
-    .hero h1 strong {
+    .hero-title-main {
       display: block;
-      margin-top: 10px;
+      font-size: clamp(2.7rem, 5.8vw, 5rem);
+      font-weight: 950;
+    }
+
+    .hero-title-extra {
+      display: grid;
+      gap: 4px;
+      margin-top: 12px;
+      color: var(--wine);
+      font-size: clamp(1.55rem, 3.1vw, 2.25rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -.02em;
+    }
+
+    .hero h1 > strong {
+      display: block;
+      margin-top: 12px;
       color: var(--rose-dark);
+      font-size: clamp(2.25rem, 4.6vw, 3.8rem);
+      font-weight: 950;
     }
 
     .hero-lead {
@@ -272,74 +327,134 @@
 
     .hero-lead b { color: var(--text); }
 
-    .hero-benefits {
+    .bundle-clarity {
       display: grid;
       gap: 10px;
       width: min(720px, 100%);
       margin: 24px 0 0;
-      padding: 0;
-      list-style: none;
+    }
+
+    .clarity-item {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.8);
+      box-shadow: 0 7px 18px rgba(66,19,39,.05);
       text-align: right;
     }
 
-    .hero-benefits li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 1.04rem;
-      font-weight: 780;
-    }
-
-    .hero-benefits li::before {
-      content: "✓";
-      width: 24px;
-      height: 24px;
-      flex: 0 0 24px;
+    .clarity-mark {
+      width: 48px;
+      height: 48px;
       display: grid;
       place-items: center;
-      margin-top: 1px;
-      border-radius: 50%;
-      color: var(--green);
-      background: #eaf7f0;
+      border-radius: 14px;
+      color: var(--wine);
+      background: var(--pink-wash);
+      font-size: 1.35rem;
       font-weight: 950;
+    }
+
+    .clarity-item strong {
+      display: block;
+      color: var(--wine-dark);
+      font-size: 1.04rem;
+      line-height: 1.3;
+    }
+
+    .clarity-item small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .91rem;
+      font-weight: 650;
+      line-height: 1.45;
     }
 
     .price-block {
-      display: flex;
-      align-items: flex-end;
+      display: grid;
+      grid-template-columns: auto minmax(260px, 1fr);
+      align-items: stretch;
       gap: 14px;
-      flex-wrap: wrap;
+      width: min(720px, 100%);
       margin-top: 28px;
     }
 
+    .price-main {
+      min-width: 185px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 14px 18px;
+      border-radius: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--wine));
+      box-shadow: 0 14px 30px rgba(111,35,64,.22);
+      text-align: center;
+    }
+
+    .price-label {
+      margin-bottom: 5px;
+      font-size: .88rem;
+      font-weight: 850;
+      opacity: .92;
+    }
+
     .hero-price {
-      color: var(--wine);
-      font-size: clamp(3.8rem, 7vw, 5.7rem);
+      font-size: clamp(3.1rem, 6vw, 4.7rem);
       font-weight: 950;
-      line-height: .88;
-      letter-spacing: -.045em;
+      line-height: .92;
+      letter-spacing: -.04em;
+      white-space: nowrap;
     }
 
     .price-context {
-      max-width: 390px;
-      padding-bottom: 4px;
+      display: grid;
+      gap: 9px;
+      padding: 13px 15px;
+      border: 1px solid rgba(111,35,64,.15);
+      border-radius: 18px;
       color: var(--muted);
-      font-weight: 800;
-      line-height: 1.55;
+      background: #fff;
+      line-height: 1.45;
     }
 
-    .saving-pill {
-      display: inline-flex;
+    .price-compare-row {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      margin-bottom: 5px;
-      padding: 7px 11px;
-      border-radius: 999px;
-      color: #76550f;
-      background: var(--gold-soft);
-      border: 1px solid rgba(201,155,66,.36);
-      font-size: .92rem;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--line);
+      font-size: .94rem;
+      font-weight: 800;
+    }
+
+    .price-compare-row del {
+      color: var(--wine);
+      font-size: 1.12rem;
       font-weight: 950;
+      white-space: nowrap;
+      text-decoration-thickness: 2px;
+    }
+
+    .price-extra-copy {
+      display: grid;
+      gap: 3px;
+      font-size: .92rem;
+    }
+
+    .price-extra-copy strong {
+      color: var(--wine-dark);
+    }
+
+    .price-extra-copy span {
+      color: var(--wine);
+      font-weight: 850;
     }
 
     .cta-row {
@@ -476,23 +591,34 @@
 
     .bonus-sticker {
       position: absolute;
-      left: 12px;
-      top: 58px;
+      left: -2px;
+      top: 48px;
       z-index: 7;
-      width: 118px;
-      height: 118px;
+      width: 174px;
       display: grid;
-      place-items: center;
-      padding: 14px;
-      border-radius: 50%;
+      gap: 7px;
+      padding: 13px 14px;
+      border-radius: 18px;
       color: #68470b;
-      background: linear-gradient(145deg, #fff8dd, #f1c96e);
-      border: 3px solid rgba(255,255,255,.9);
+      background: linear-gradient(145deg, #fffaf0, #f5d783);
+      border: 3px solid rgba(255,255,255,.94);
       box-shadow: 0 15px 34px rgba(100,70,12,.2);
-      text-align: center;
+      text-align: right;
+      line-height: 1.2;
+      transform: rotate(-4deg);
+    }
+
+    .bonus-sticker small {
+      font-size: .7rem;
+      font-weight: 850;
+      opacity: .82;
+    }
+
+    .bonus-sticker strong,
+    .bonus-sticker span {
+      display: block;
+      font-size: .88rem;
       font-weight: 950;
-      line-height: 1.15;
-      transform: rotate(-8deg);
     }
 
     .quick-proof {
@@ -979,9 +1105,9 @@
       .creator-card { grid-template-columns: 1fr; }
 
       .hero-copy { text-align: center; }
-      .hero-lead, .hero-benefits { margin-inline: auto; }
-      .hero-benefits { max-width: 680px; text-align: right; }
-      .price-block, .cta-row { justify-content: center; }
+      .hero-lead, .bundle-clarity, .price-block { margin-inline: auto; }
+      .bundle-clarity { max-width: 680px; }
+      .cta-row { justify-content: center; }
       .microcopy { text-align: center; }
       .hero-visual { min-height: 530px; }
       .quick-proof-grid { grid-template-columns: repeat(2, 1fr); }
@@ -998,11 +1124,33 @@
 
     @media (max-width: 640px) {
       .container { width: min(100% - 22px,var(--container)); }
-      .announcement { font-size: .86rem; }
-      .countdown { min-width: 158px; }
+      .announcement { padding: 8px 10px; font-size: .84rem; }
+      .announcement-inner { flex-direction: column; gap: 6px; }
+      .announcement-label { font-size: .8rem; }
+      .countdown {
+        width: min(100%, 340px);
+        min-width: 0;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        padding: 5px;
+        border-radius: 13px;
+      }
+      .countdown-prefix { display: none; }
+      .time-unit { min-width: 0; padding: 4px 2px; }
+      .time-unit b { font-size: .93rem; }
+      .time-unit small { font-size: .61rem; }
       .hero { padding: 32px 0 46px; }
-      .hero h1 { font-size: clamp(2.35rem,11.5vw,3.75rem); }
-      .hero-benefits li { font-size: .98rem; }
+      .hero-title-main { font-size: clamp(2.25rem, 10.8vw, 3.3rem); }
+      .hero-title-extra { margin-top: 10px; font-size: clamp(1.3rem, 6.1vw, 1.72rem); }
+      .hero h1 > strong { margin-top: 10px; font-size: clamp(2rem, 9.5vw, 2.85rem); }
+      .clarity-item { grid-template-columns: 42px minmax(0,1fr); gap: 10px; padding: 11px 12px; }
+      .clarity-mark { width: 42px; height: 42px; border-radius: 12px; font-size: 1.15rem; }
+      .clarity-item strong { font-size: .98rem; }
+      .clarity-item small { font-size: .85rem; }
+      .price-block { grid-template-columns: 1fr; }
+      .price-main { min-width: 0; padding: 13px 16px; }
+      .hero-price { font-size: 3.25rem; }
+      .price-context { text-align: right; }
       .cta-row .cta, .final-offer .cta { width: 100%; }
       .section { padding: 56px 0; }
       .hero-visual { min-height: 470px; }
@@ -1010,7 +1158,8 @@
       .device { inset: 38px 28px 34px 24px; }
       .mini-game { width: 145px; min-height: 112px; padding: 14px; }
       .mini-game small { display: none; }
-      .bonus-sticker { width: 98px; height: 98px; left: 3px; top: 56px; font-size: .88rem; }
+      .bonus-sticker { width: 156px; left: 0; top: 48px; padding: 11px 12px; }
+      .bonus-sticker strong, .bonus-sticker span { font-size: .8rem; }
       .quick-proof-grid { grid-template-columns: 1fr 1fr; }
       .quick-proof-item { font-size: .88rem; gap: 7px; }
       .game-card { grid-template-columns: 1fr; padding: 18px; }
@@ -1045,6 +1194,16 @@
       }
 
       .mobile-cta small { display: block; font-weight: 650; opacity: .9; }
+    }
+
+    @media (max-width: 420px) {
+      .announcement-label { font-size: .75rem; }
+      .countdown { width: 100%; }
+      .hero-lead { font-size: 1rem; line-height: 1.65; }
+      .price-compare-row { align-items: flex-start; font-size: .88rem; }
+      .price-extra-copy { font-size: .86rem; }
+      .bonus-sticker { width: 146px; top: 54px; }
+      .quick-proof-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 520px) {
@@ -1085,8 +1244,14 @@
   <div class="sticky-stack">
     <div class="announcement" id="announcement">
       <div class="announcement-inner">
-        <span>💝 מחיר המבצע בתוקף עד מוצ״ש ב־23:59</span>
-        <span class="countdown" id="countdown" aria-live="polite">טוען...</span>
+        <span class="announcement-label">💝 המבצע מסתיים במוצ״ש, 1.8, בשעה 23:59</span>
+        <div class="countdown" id="countdown" aria-live="polite" aria-label="הזמן שנותר לסיום המבצע">
+          <span class="countdown-prefix">נותרו:</span>
+          <span class="time-unit"><b id="countdown-days">--</b><small>ימים</small></span>
+          <span class="time-unit"><b id="countdown-hours">--</b><small>שעות</small></span>
+          <span class="time-unit"><b id="countdown-minutes">--</b><small>דקות</small></span>
+          <span class="time-unit"><b id="countdown-seconds">--</b><small>שניות</small></span>
+        </div>
       </div>
     </div>
 
@@ -1121,7 +1286,11 @@
         <div class="hero-copy">
           <span class="eyebrow">✨ כל מה שצריך כדי להפוך ערב בבית לדייט אמיתי</span>
           <h1>
-            3 משחקים זוגיים מלאים, משחק בונוס ו־3 הזמנות לדייט
+            <span class="hero-title-main">3 משחקים זוגיים מלאים</span>
+            <span class="hero-title-extra">
+              <span>+ מיני־משחק בונוס</span>
+              <span>+ 3 הזמנות מעוצבות לדייט</span>
+            </span>
             <strong>הכול ב־100 ₪</strong>
           </h1>
 
@@ -1130,17 +1299,46 @@
             בלי להדפיס, בלי להזמין מקום ובלי להיתקע שוב עם השאלה <b>אז מה נעשה הערב?</b>
           </p>
 
-          <ul class="hero-benefits">
-            <li>שלושה משחקים מלאים, שכל אחד מהם נבנה עם קונספט, קצב ואווירה משלו</li>
-            <li>משחק הבונוס החדש <strong>מסכימים או מסתבכים</strong> — כלול רק בחבילה</li>
-            <li>הזמנה מעוצבת לכל משחק, מוכנה למילוי ולשליחה לבן או לבת הזוג</li>
-          </ul>
+          <div class="bundle-clarity" aria-label="תכולת חבילת ט״ו באב">
+            <article class="clarity-item">
+              <span class="clarity-mark" aria-hidden="true">3</span>
+              <div>
+                <strong>שלושה משחקים זוגיים מלאים</strong>
+                <small>משחק הזיכרון הגדול, מירוץ האהבה והיער הקסום — כל אחד הוא משחק נפרד ומלא.</small>
+              </div>
+            </article>
 
-          <div class="price-block">
-            <span class="hero-price">100 ₪</span>
+            <article class="clarity-item">
+              <span class="clarity-mark" aria-hidden="true">🎁</span>
+              <div>
+                <strong>מיני־משחק בונוס נוסף</strong>
+                <small>מסכימים או מסתבכים מצטרף לחבילה ואינו אחד משלושת המשחקים המלאים.</small>
+              </div>
+            </article>
+
+            <article class="clarity-item">
+              <span class="clarity-mark" aria-hidden="true">💌</span>
+              <div>
+                <strong>שלוש הזמנות מעוצבות לדייט</strong>
+                <small>הזמנה נפרדת לכל אחד משלושת המשחקים המלאים, למילוי ושליחה בוואטסאפ.</small>
+              </div>
+            </article>
+          </div>
+
+          <div class="price-block" aria-label="פירוט מחיר החבילה">
+            <div class="price-main">
+              <span class="price-label">מחיר החבילה</span>
+              <span class="hero-price">100 ₪</span>
+            </div>
             <div class="price-context">
-              <span class="saving-pill">חיסכון של 44 ₪ על שלושת המשחקים</span><br>
-              במקום 144 ₪ — והבונוס וההזמנות כלולים ללא תוספת תשלום
+              <div class="price-compare-row">
+                <span>מחיר 3 המשחקים המלאים בנפרד</span>
+                <del>144 ₪</del>
+              </div>
+              <div class="price-extra-copy">
+                <strong>ובחבילת המבצע מקבלים בנוסף:</strong>
+                <span>מיני־משחק בונוס + 3 הזמנות מעוצבות לדייט</span>
+              </div>
             </div>
           </div>
 
@@ -1181,7 +1379,11 @@
               <small>מסע זוגי רומנטי וסיפורי</small>
             </div>
 
-            <div class="bonus-sticker">+ משחק בונוס<br>+ 3 הזמנות</div>
+            <div class="bonus-sticker" aria-label="התוספות שמקבלים בחבילה">
+              <small>בנוסף לשלושת המשחקים המלאים</small>
+              <strong>🎁 מיני־משחק בונוס</strong>
+              <span>💌 3 הזמנות מעוצבות</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1190,8 +1392,8 @@
     <section class="quick-proof" aria-label="יתרונות החבילה">
       <div class="container quick-proof-grid">
         <div class="quick-proof-item"><span>🎮</span>3 משחקים מלאים</div>
-        <div class="quick-proof-item"><span>🎁</span>משחק בונוס בלעדי</div>
-        <div class="quick-proof-item"><span>💌</span>3 הזמנות מעוצבות</div>
+        <div class="quick-proof-item"><span>🎁</span>+ מיני־משחק בונוס</div>
+        <div class="quick-proof-item"><span>💌</span>+ 3 הזמנות לדייט</div>
         <div class="quick-proof-item"><span>♾️</span>גישה שנשארת לתמיד</div>
       </div>
     </section>
@@ -1281,19 +1483,20 @@
       <div class="container">
         <div class="value-box">
           <div class="value-copy">
-            <h2>כמעט אותו מחיר של שני משחקים — ומקבלים את כל החבילה</h2>
+            <h2>שלושת המשחקים המלאים עולים בנפרד 144 ₪ — בחבילה משלמים 100 ₪</h2>
             <p>
-              שני משחקים בנפרד עולים 96 ₪. בתוספת 4 ₪ בלבד תקבלו גם את המשחק השלישי,
-              את מיני־משחק הבונוס <strong>מסכימים או מסתבכים</strong> ואת שלוש ההזמנות המעוצבות.
+              במחיר המבצע מקבלים את <strong>כל שלושת המשחקים המלאים</strong> וחוסכים 44 ₪ על מחירם בנפרד.
+              בנוסף אליהם מצטרפים לחבילה מיני־משחק הבונוס <strong>מסכימים או מסתבכים</strong>
+              ושלוש הזמנות מעוצבות לדייט.
             </p>
-            <span class="value-highlight">במקום לבחור משחק אחד — מקבלים כמה ערבי דייט שונים</span>
+            <span class="value-highlight">3 משחקים מלאים + מיני־משחק בונוס + 3 הזמנות — הכול ב־100 ₪</span>
           </div>
 
           <div class="value-math" aria-label="פירוט המחיר">
-            <div class="math-row"><span>משחק אחד</span><strong>48 ₪</strong></div>
-            <div class="math-row"><span>שני משחקים</span><strong>96 ₪</strong></div>
-            <div class="math-row"><span>שלושת המשחקים בנפרד</span><strong>144 ₪</strong></div>
-            <div class="math-row total"><span>כל החבילה במבצע</span><strong>100 ₪</strong></div>
+            <div class="math-row"><span>3 המשחקים המלאים בנפרד</span><strong>144 ₪</strong></div>
+            <div class="math-row"><span>החיסכון על המשחקים</span><strong>44 ₪</strong></div>
+            <div class="math-row total"><span>מחיר חבילת המבצע</span><strong>100 ₪</strong></div>
+            <div class="math-row"><span>נוסף לחבילה</span><strong>מיני־משחק + 3 הזמנות</strong></div>
             <a class="cta" href="#" data-buy data-buy-location="value">לקבלת כל החבילה ב־100 ₪</a>
           </div>
         </div>
@@ -1468,7 +1671,7 @@
   </footer>
 
   <a class="mobile-cta" href="#" data-buy data-buy-location="mobile-sticky">
-    <span>3 משחקים + כל הבונוסים <small>חבילת ט״ו באב</small></span>
+    <span>3 משחקים + מיני־משחק + 3 הזמנות <small>חבילת ט״ו באב</small></span>
     <strong>100 ₪</strong>
   </a>
 
@@ -1571,8 +1774,8 @@
       const distance = end - Date.now();
 
       if (distance <= 0) {
-        countdown.textContent = "המבצע הסתיים";
-        const announcementText = announcement.querySelector("span:first-child");
+        countdown.innerHTML = '<span class="countdown-prefix" style="grid-column:1/-1">המבצע הסתיים</span>';
+        const announcementText = announcement.querySelector(".announcement-label");
         if (announcementText) announcementText.textContent = "מבצע ט״ו באב הסתיים";
         document.body.classList.add("expired");
 
@@ -1592,7 +1795,18 @@
       const hours = Math.floor((distance / 3600000) % 24);
       const minutes = Math.floor((distance / 60000) % 60);
       const seconds = Math.floor((distance / 1000) % 60);
-      countdown.textContent = `${days} ימים ${String(hours).padStart(2,"0")}:${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+      const values = {
+        "countdown-days": days,
+        "countdown-hours": hours,
+        "countdown-minutes": minutes,
+        "countdown-seconds": seconds
+      };
+
+      Object.entries(values).forEach(([id, value]) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = String(value).padStart(2, "0");
+      });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
