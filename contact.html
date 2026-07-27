@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>צור קשר - משחקי זוגיות רותם עדיני</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      font-family: 'Assistant', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .contact-page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .contact-page h1 {
+      color: #8e44ad;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Rubik', sans-serif;
+    }
+    
+    .contact-page h2 {
+      color: #8e44ad;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #e8daef;
+      padding-bottom: 0.5rem;
+    }
+    
+    .contact-page p {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    
+    .contact-methods {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .contact-method {
+      background: linear-gradient(135deg, #f8f4fc, #e8daef);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 2px solid #e8daef;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-method:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(142, 68, 173, 0.2);
+      border-color: #8e44ad;
+    }
+    
+    .contact-method .icon {
+      font-size: 3rem;
+      color: #8e44ad;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-method h3 {
+      color: #8e44ad;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Rubik', sans-serif;
+    }
+    
+    .contact-method .description {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .contact-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #8e44ad, #9b59b6);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+    
+    .contact-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(142, 68, 173, 0.4);
+    }
+    
+    .contact-form {
+      background: #fafafa;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      text-align: right;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Assistant', sans-serif;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #8e44ad;
+      outline: none;
+    }
+    
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .contact-form button {
+      background: linear-gradient(135deg, #8e44ad, #9b59b6);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+      position: relative;
+    }
+    
+    .contact-form button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(142, 68, 173, 0.4);
+    }
+    
+    .contact-form button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffffff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 10px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .success-message {
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border: 1px solid #c3e6cb;
+      display: none;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .error-message {
+      background: #f8d7da;
+      color: #721c24;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border: 1px solid #f5c6cb;
+      display: none;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    .fun-section {
+      background: linear-gradient(135deg, #8e44ad, #9b59b6);
+      color: white;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+    
+    .fun-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Rubik', sans-serif;
+    }
+    
+    .response-time {
+      background: #e8f5e9;
+      border-right: 4px solid #4caf50;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .setup-notice {
+      background: #fff3cd;
+      color: #856404;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border: 1px solid #ffeaa7;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-page {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      
+      .contact-page h1 {
+        font-size: 2rem;
+      }
+      
+      .contact-methods {
+        gap: 1rem;
+      }
+      
+      .contact-method {
+        padding: 1.5rem;
+      }
+      
+      .contact-method .icon {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <h1>🎮 משחקי זוגיות</h1>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <a href="index.html">🏠 דף הבית</a>
+  <a href="forest-game.html">🌲 היער הקסום</a>
+  <a href="race-game.html">💕 מירוץ האהבה</a>
+ <a href="memorygame.html">🧠 משחק הזיכרון הגדול</a>
+  <a href="index.html#newsletter">📧 הרשמה לעדכונים</a>
+  <a href="contact.html">📞 צור קשר</a>
+  <a href="privacy-policy.html">🔒 מדיניות פרטיות</a>
+  <a href="terms.html">📋 תקנון</a>
+</nav>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <main>
+    <div class="contact-page">
+      
+      <h1>💜 בואו נתחבר!</h1>
+      
+      <p>יש לכם שאלה על המשחקים? רוצים לשתף איך היה לכם? או אולי יש לכם רעיון למשחק חדש?<br>
+      אני אוהבת לשמוע מכם ותמיד שמחה לעזור! 😊</p>
+
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="icon">📧</div>
+          <h3>שלחו לי מייל</h3>
+          <p class="description">הדרך הכי טובה ליצור קשר - אני עונה לכל מייל אישית</p>
+          <a href="mailto:rotemadini@gmail.com?subject=פנייה מאתר משחקי זוגיות" class="contact-button">
+            <i class="fas fa-envelope"></i> rotemadini@gmail.com
+          </a>
+          <div class="response-time">
+            <i class="fas fa-clock"></i> זמן תגובה: עד 24 שעות בימי עסקים
+          </div>
+        </div>
+      </div>
+
+      <div class="fun-section">
+        <h3>💌 מה אתם יכולים לכתוב לי?</h3>
+        <p>✨ שאלות על המשחקים - איך זה עובד, מה כלול, וכו'<br>
+        ✨ שיתוף חוויות - איך היה לכם במשחק?<br>
+        ✨ בעיות טכניות - לא הצלחתם להוריד או לפתוח משהו?<br>
+        ✨ רעיונות למשחקים חדשים - אשמח לשמוע!<br>
+        ✨ פשוט להגיד שלום - גם זה בסדר גמור! 😊</p>
+      </div>
+
+      <h2>שלחו הודעה ישירות מכאן:</h2>
+      
+      <!-- Formspree form with AJAX -->
+      <form class="contact-form" id="contactForm">
+        <input type="hidden" name="_next" value="#success">
+        <input type="text" name="name" placeholder="השם שלכם *" required>
+        <input type="email" name="email" placeholder="האימייל שלכם *" required>
+        <input type="text" name="subject" placeholder="נושא הפנייה">
+        <textarea name="message" placeholder="מה אתם רוצים לכתוב לי? 😊" required></textarea>
+        <button type="submit" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> שלחו הודעה
+          <div class="spinner" id="spinner"></div>
+        </button>
+      </form>
+
+      <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i> ההודעה נשלחה בהצלחה! אחזור אליכם בהקדם 💜
+      </div>
+      
+      <div class="error-message" id="errorMessage">
+        <i class="fas fa-exclamation-circle"></i> אופס! משהו השתבש. אנא נסו שוב או שלחו מייל ישירות.
+      </div>
+
+ 
+
+      <p style="color: #666; font-size: 0.9rem; margin-top: 1rem;">
+        <i class="fas fa-heart" style="color: #e91e63;"></i> 
+        אני קוראת כל הודעה ועונה אישית. המשחקים נולדו מתוך אהבה לזוגיות ולחיבור אמיתי, 
+        ואני רוצה שתרגישו שאתם חלק מהמשפחה הקטנה הזאת!
+      </p>
+    </div>
+  </main>
+  <!-- Footer -->
+<footer id="contact" class="footer" style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;">
+  <div class="footer-links" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+    <a href="contact.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+      <i class="fas fa-envelope"></i> צור קשר
+    </a>
+    <a href="privacy-policy.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+      <i class="fas fa-shield-alt"></i> מדיניות פרטיות
+    </a>
+    <a href="terms.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+      <i class="fas fa-file-contract"></i> תקנון שימוש
+    </a>
+  </div>
+  
+  <div class="social" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+    <a href="https://www.instagram.com/rotem_adini?igsh=MTFrd3VlOXdqdDVubQ%3D%3D&utm_source=qr" target="_blank" class="instagram" aria-label="אינסטגרם" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/share/16WJDMpdpV/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="פייסבוק" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.tiktok.com/@rotem_adini?_t=ZS-8xCVScFHbYF&_r=1" target="_blank" class="tiktok" aria-label="טיקטוק" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://www.youtube.com/@rotemadini" target="_blank" class="youtube" aria-label="יוטיוב" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+  
+  <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">&copy; 2025 רותם עדיני - משחקי זוגיות. כל הזכויות שמורות.</p>
+</footer>
+
+<style>
+.footer a:hover {
+  background: white !important;
+  color: #8e44ad !important;
+  transform: translateY(-2px);
+}
+.social a:hover {
+  background: white !important;
+  color: #8e44ad !important;
+  transform: scale(1.1);
+}
+</style>
+  <script>
+    // Sidebar functionality
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
+      const hamburger = document.querySelector('.hamburger');
+      
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    // Mark current page in sidebar
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+      const sidebarLinks = document.querySelectorAll('.sidebar a');
+      
+      sidebarLinks.forEach(link => {
+        const linkHref = link.getAttribute('href');
+        if (linkHref === 'contact.html' && currentPage === 'contact.html') {
+          link.style.background = 'var(--gradient-primary)';
+          link.style.color = 'white';
+        }
+      });
+    });
+
+    // Contact form handler with AJAX
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const form = this;
+      const submitBtn = document.getElementById('submitBtn');
+      const spinner = document.getElementById('spinner');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      spinner.style.display = 'inline-block';
+      
+      // Create form data
+      const formData = new FormData(form);
+      
+      // Send to Formspree using fetch
+      fetch('https://formspree.io/f/xblyedyw', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          // Success!
+          successMessage.style.display = 'block';
+          form.reset();
+          
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Hide success message after 8 seconds
+          setTimeout(() => {
+            successMessage.style.display = 'none';
+          }, 8000);
+          
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+        errorMessage.style.display = 'block';
+        
+        // Scroll to error message
+        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Hide error message after 8 seconds
+        setTimeout(() => {
+          errorMessage.style.display = 'none';
+        }, 8000);
+        
+      }).finally(() => {
+        // Reset button state
+        submitBtn.disabled = false;
+        spinner.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>

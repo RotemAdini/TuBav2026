@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>משחקי זוגיות - רותם עדיני</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Assistant:wght@300;400;600;700&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/homepage.css">
+  
+  <style>
+/* Bridge Section Styles */
+.bridge-section {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 3rem 2rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: -2rem;
+}
+
+.bridge-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23fff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><ellipse cx="50%" cy="0%" rx="100%" ry="100%" fill="url(%23a)"/></svg>');
+  pointer-events: none;
+}
+
+.bridge-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+.section-subtitle {
+  font-size: 1.3rem;
+  color: #6c757d;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.benefit-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.benefit-icon {
+  margin-bottom: 1.5rem;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover .icon-circle {
+  transform: scale(1.1) rotate(360deg);
+}
+
+.icon-circle i {
+  font-size: 2rem;
+  color: white;
+}
+
+.benefit-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+.benefit-content p {
+  color: #6c757d;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.scroll-hint {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.scroll-hint p {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.bounce-arrow {
+  font-size: 2rem;
+  animation: bounce 2s infinite;
+  display: inline-block;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+  margin-top: -1rem;
+}
+
+.newsletter-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.newsletter-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* איפוס עיצוב SendMsg */
+.newsletter-section .fc_container,
+.newsletter-section .fc-div-struct,
+.newsletter-section .tbody,
+.newsletter-section .tr,
+.newsletter-section .td {
+  all: unset !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+.newsletter-section .fc_container {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+/* עיצוב השדות */
+.newsletter-section .fc_input_text {
+  width: 100% !important;
+  padding: 1rem 1.5rem !important;
+  border: 2px solid rgba(255,255,255,0.2) !important;
+  border-radius: 25px !important;
+  font-size: 1rem !important;
+  font-family: 'Assistant', sans-serif !important;
+  text-align: right !important;
+  background: rgba(255,255,255,0.1) !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  margin: 0 !important;
+}
+
+.newsletter-section .fc_input_text::placeholder {
+  color: rgba(255,255,255,0.7) !important;
+}
+
+.newsletter-section .fc_input_text:focus {
+  background: rgba(255,255,255,0.2) !important;
+  border-color: rgba(255,255,255,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.1) !important;
+}
+
+/* עיצוב הכפתור */
+.newsletter-section .fc_button {
+  background: white !important;
+  color: #667eea !important;
+  padding: 1rem 2rem !important;
+  border: none !important;
+  border-radius: 25px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  font-family: 'Assistant', sans-serif !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  width: auto !important;
+  margin: 1rem auto 0 auto !important;
+  display: block !important;
+}
+
+.newsletter-section .fc_button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+}
+
+.newsletter-section .fc_button:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* עיצוב הצ'קבוקס */
+.newsletter-section .fc-confirm-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  margin: 1rem 0 !important;
+  font-size: 0.9rem !important;
+}
+
+.newsletter-section .fc_confirm {
+  width: 18px !important;
+  height: 18px !important;
+  accent-color: white !important;
+  margin: 0 8px 0 0 !important;
+}
+
+.newsletter-section .fc_confirm_text {
+  color: white !important;
+  font-size: 0.9rem !important;
+  opacity: 0.9 !important;
+}
+
+.newsletter-section label {
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-overlay.active {
+  display: flex;
+}
+
+.popup-content {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: popupSlideIn 0.3s ease-out;
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.popup-close:hover {
+  color: #333;
+}
+
+.popup-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.popup-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-family: 'Rubik', sans-serif;
+}
+
+.popup-text {
+  font-size: 1.1rem;
+  color: #6c757d;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.popup-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.popup-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .bridge-section {
+    padding: 2rem 1rem;
+    margin-top: -1rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .benefit-card {
+    padding: 2rem;
+  }
+  
+  .newsletter-section {
+    padding: 2rem 1rem;
+    margin-top: -1rem;
+  }
+  
+  .newsletter-section h2 {
+    font-size: 2rem;
+  }
+  
+  .newsletter-section .fc_input_text {
+    font-size: 16px !important; /* מונע zoom באייפון */
+  }
+
+  .popup-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .popup-title {
+    font-size: 1.5rem;
+  }
+  
+  .popup-icon {
+    font-size: 3rem;
+  }
+
+  #games.games-section {
+    padding: 2rem 1rem;
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .benefit-card {
+    padding: 1.5rem;
+  }
+  
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .icon-circle i {
+    font-size: 1.5rem;
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.cta-button i {
+  margin-left: 0.5rem;
+}
+
+.cta-button {
+  display: inline-block !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 1rem 2rem !important;
+  text-decoration: none !important;
+  border: none !important;
+  border-radius: 25px !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3) !important;
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a3e90 100%) !important;
+}
+
+.cta-button i {
+  margin-left: 0.5rem !important;
+}
+</style>
+</head>
+<body>
+  <!-- Header אחיד -->
+  <header id="header">
+    <h1>🎮 משחקי זוגיות</h1>
+    <div class="hamburger" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <a href="index.html">🏠 דף הבית</a>
+  <a href="forest-game.html">🌲 היער הקסום</a>
+  <a href="race-game.html">💕 מירוץ האהבה</a>
+<a href="memorygame.html">🧠 משחק הזיכרון הגדול</a>
+  <a href="index.html#newsletter">📧 הרשמה לעדכונים</a>
+  <a href="contact.html">📞 צור קשר</a>
+  <a href="privacy-policy.html">🔒 מדיניות פרטיות</a>
+  <a href="terms.html">📋 תקנון</a>
+</nav>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+
+<section class="hero-classic-purple">
+  <div class="hero-content-classic-purple">
+    
+
+    <div class="personal-intro-classic-purple">
+      <h3 class="intro-greeting-classic-purple">ברוכים הבאים! אני רותם 💜</h3>
+      <p class="mission-statement-classic-purple">
+      המטרה שלי? להפוך כל ערב שגרתי לרגע של
+        <span class="special-word-classic-purple">קסם זוגי</span>.
+      </p>
+    </div>
+
+    <div class="main-promise-classic-purple">
+      <p class="promise-text-classic-purple">
+       המשחקים שיצרתי יחזירו את הפלירטוט, הצחוק והחיבור שגרם לכם להתאהב מההתחלה ✨
+
+
+      </p>
+    </div>
+
+    <div class="compelling-question-classic-purple">
+      <h3 class="question-text-classic-purple">
+       כי מי צריך לצאת מהבית כשאפשר ליצור ערב מושלם ממש בסלון?
+      </h3>
+    </div>
+
+    <div class="simple-benefits-classic-purple">
+      <p class="benefit-line-classic-purple">
+        🏠 בלי תכנון מסובך • 💜 רק אתם + משחק = ערב מושלם
+      </p>
+    </div>
+
+    <div class="action-area-classic-purple">
+      <a href="#games" class="main-cta-classic-purple">
+        <span class="cta-icon-classic-purple">🎲</span>
+        <span class="cta-text-classic-purple">בואו נתחיל!</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Alef&display=swap");
+
+  .hero-classic-purple {
+    background: linear-gradient(160deg, #f7f2fa 0%, #e3d6f3 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem;
+    direction: rtl;
+    color: #3c2a4d;
+    font-family: 'Assistant', sans-serif;
+  }
+
+  .hero-content-classic-purple {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    animation: fadeInSlideUp 1.2s ease-out forwards;
+  }
+
+  @keyframes fadeInSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .main-title-classic-purple {
+    font-family: "Assistant", sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: #5e3c82;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .heart-icon-classic {
+    color: #b95fc9;
+    font-size: 1em;
+    vertical-align: middle;
+  }
+
+  .intro-greeting-classic-purple {
+    font-family: "Assistant", sans-serif;
+    font-size: 3.4rem;
+    font-weight: 700;
+    color: #9b6cc3;
+    margin-bottom: 2rem;
+  }
+
+  .mission-statement-classic-purple {
+    font-size: 2.2rem;
+    color: #4d3a61;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .special-word-classic-purple {
+    color: #b95fc9;
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+
+  .main-promise-classic-purple,
+  .compelling-question-classic-purple,
+  .simple-benefits-classic-purple {
+    margin: 4rem 0;
+  }
+
+  .promise-text-classic-purple {
+    font-size: 2rem;
+    color: #4d3a61;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .question-text-classic-purple {
+    font-family: "Assistant", sans-serif;
+    font-size: 3rem;
+    color: #7a51a0;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .benefit-line-classic-purple {
+    font-size: 2rem;
+    color: #775d92;
+    font-weight: 500;
+  }
+
+  .action-area-classic-purple {
+    margin-top: 5rem;
+  }
+
+  .main-cta-classic-purple {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: linear-gradient(135deg, #a050c4, #843fa6);
+    color: white;
+    font-size: 2.1rem;
+    font-weight: 600;
+    padding: 1.8rem 4rem;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 20px rgba(160, 80, 196, 0.3);
+    transition: all 0.3s ease-in-out;
+    border: none;
+    position: relative;
+    z-index: 1;
+    font-family: "Assistant", sans-serif;
+  }
+
+  .main-cta-classic-purple::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease-out;
+    z-index: -1;
+  }
+
+  .main-cta-classic-purple:hover::before {
+    left: 0;
+  }
+
+  .main-cta-classic-purple:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(160, 80, 196, 0.45);
+  }
+
+  .cta-icon-classic-purple {
+    font-size: 2.4rem;
+    transition: transform 0.3s ease;
+  }
+
+  .main-cta-classic-purple:hover .cta-icon-classic-purple {
+    transform: rotate(6deg);
+  }
+
+  @media (max-width: 768px) {
+    .main-title-classic-purple {
+      font-size: 4rem;
+    }
+
+    .intro-greeting-classic-purple {
+      font-size: 2.8rem;
+    }
+
+    .mission-statement-classic-purple,
+    .promise-text-classic-purple {
+      font-size: 1.9rem;
+    }
+
+    .question-text-classic-purple {
+      font-size: 2.5rem;
+    }
+
+    .benefit-line-classic-purple {
+      font-size: 1.8rem;
+    }
+
+    .main-cta-classic-purple {
+      font-size: 1.8rem;
+      padding: 1.5rem 3.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-title-classic-purple {
+      font-size: 3.2rem;
+    }
+
+    .intro-greeting-classic-purple {
+      font-size: 2.4rem;
+    }
+
+    .mission-statement-classic-purple,
+    .promise-text-classic-purple {
+      font-size: 1.6rem;
+    }
+
+    .question-text-classic-purple {
+      font-size: 2rem;
+    }
+
+    .benefit-line-classic-purple {
+      font-size: 1.6rem;
+    }
+
+    .main-cta-classic-purple {
+      font-size: 1.6rem;
+      padding: 1.3rem 2.8rem;
+    }
+  }
+</style>
+
+ <section id="games" class="games-section">
+    <div class="games-container">
+      <h1 style="text-align: center; font-size: 3rem; color: #8e44ad; margin: 2rem 0 3rem; font-family: 'Rubik', sans-serif;">
+        המשחקים שלי 🎮
+      </h1>
+      
+      <div class="games-grid">
+        <!-- משחק היער הקסום -->
+        <div class="game-card">
+          <div class="game-card-content">
+            <h3>🌲 היער הקסום</h3>
+            <p>משחק זוגי דיגיטלי שמשלב שיחות עומק, משימות מקרבות ורגעי קסם. מסע מסתורי דרך היער שיעמיק את הקשר שלכם.</p>
+            <a href="forest-game.html" class="btn-primary">קרא עוד</a>
+          </div>
+        </div>
+        
+        <!-- משחק מירוץ האהבה -->
+        <div class="game-card">
+          <div class="game-card-content">
+            <h3>💕 מירוץ האהבה</h3>
+            <p>תחרות זוגית מצחיקה עם 11 תחנות של משימות, אתגרים וצחוקים. גלו מי המנצח האמיתי בזוגיות שלכם!</p>
+            <a href="race-game.html" class="btn-primary">קרא עוד</a>
+          </div>
+        </div>
+        
+        <!-- משחק הזיכרון הגדול -->
+      <div class="game-card">
+  <div class="game-card-content">
+    <h3>🧠 משחק הזיכרון הגדול</h3>
+    <p>משחק זוגי דיגיטלי עם 40 שאלות שיחזיר לכם את התחושה מהדייטים הראשונים. זיכרונות, צחוקים וחיבור אמיתי.</p>
+    <a href="memoryGame.html" class="btn-primary">קרא עוד</a>
+  </div>
+</div>
+      </div>
+    </div>
+  </section>
+  <!-- Bridge Section -->
+  <section class="bridge-section">
+    <div class="bridge-content">
+      <div class="section-header">
+        <h2>🎮 למה משחקי זוגיות?</h2>
+        <p class="section-subtitle">הסיבות הטובות ביותר להתחיל לשחק ביחד עוד היום</p>
+      </div>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <div class="icon-circle">
+              <i class="fas fa-home"></i>
+            </div>
+          </div>
+          <div class="benefit-content">
+            <h3>בנוחות של הבית</h3>
+            <p>בלי תכנון מורכב, בלי איפור מיוחד, בלי חיפוש אחר בייביסיטר. פשוט אתם, הספה והמשחק</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <div class="icon-circle">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+          <div class="benefit-content">
+            <h3>חיבור אמיתי</h3>
+            <p>שיחות מעמיקות, צחוקים ללא הפסקה ורגעי קרבה שתזכרו עוד הרבה זמן אחרי המשחק</p>
+          </div>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <div class="icon-circle">
+              <i class="fas fa-clock"></i>
+            </div>
+          </div>
+          <div class="benefit-content">
+            <h3>מתי שבא לכם</h3>
+            <p>אין לוחות זמנים, אין הזמנות מראש. רק שעה-שעתיים של כיף טהור במועד הנוח לכם</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <h1>מוכנים לראות איזה משחקים יש לנו?  <div class="bounce-arrow">⬇️</div> </h1>
+       
+      </div>
+    </div>
+  </section>
+
+  <!-- Games Section -->
+ 
+
+ 
+
+  <!-- Newsletter Section -->
+  <section id="newsletter" class="newsletter-section">
+    <div class="newsletter-content">
+      <h2>🔔 הישארו מעודכנים</h2>
+      <p>קבלו עדכונים על משחקים חדשים, הנחות מיוחדות וטיפים לזוגיות מוצלחת</p>
+      
+      <!-- SendMsg Form מותאם -->
+      <form id="containingDiv7eaada0" class="fc_container fc-bg-img type-horizontal field-inside" action="https://panel.sendmsg.co.il/AddUserFromSite.aspx" method="post" target="stay_iframe" lang="heb">
+        
+        <!-- שם -->
+        <div class="tr fc-row-field">
+          <div class="td fc-cell-field">
+            <input maxlength="250" type="text" id="1" name="1" data-fc-type="text" class="fc_input_text" data-fc-id="1" data-fc-must-fill="true" placeholder="השם שלכם" required>
+          </div>
+        </div>
+        
+        <!-- מייל -->
+        <div class="tr fc-row-field">
+          <div class="td fc-cell-field">
+            <input type="email" id="email" name="eMail" class="fc_input_text" data-fc-id="email" data-fc-must-fill="true" placeholder="המייל שלכם" required>
+          </div>
+        </div>
+        
+        <!-- אישור דיוור -->
+        <div class="tr fc-row fc-row-field fc-checkbox-row fc-confirm-row fc-colspan">
+          <div class="td fc-cell fc-cell-field fc-cell-text" colspan="2">
+            <label>
+              <input type="checkbox" class="fc_confirm" id="confirm" name="confirm" data-fc-id="confirm" data-fc-type="confirm" value="1" required>
+              <span class="fc-text fc_confirm_text">
+                אני מאשר/ת לקבל דיוורים מרותם עדיני
+              </span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- כפתור שליחה -->
+        <div class="tr fc-button-row fc-hidden-row fc-colspan">
+          <div colspan="2" style="padding-top:7px;text-align:center;" class="td fc-cell-text">
+            <input value="🔔 הרשמה לעדכונים" class="MustField fc_button" type="submit">
+            <input type="hidden" class="MustField" name="form" value="340454__79cf4669-7e4a-4608-844b-b611053ffd47" data-fc-id="form">
+          </div>
+        </div>
+        
+      </form>
+      
+      <!-- iframe נסתר -->
+      <iframe name="stay_iframe" style="display: none;"></iframe>
+      
+      <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
+        🔒 הפרטיות שלכם חשובה לנו - לא נשלח ספאם
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="footer" style="background: linear-gradient(135deg, #8e44ad, #9b59b6); color: white; text-align: center; padding: 2rem 1rem; margin-top: 3rem;">
+    <div class="footer-links" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+      <a href="contact.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-envelope"></i> צור קשר
+      </a>
+      <a href="privacy-policy.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-shield-alt"></i> מדיניות פרטיות
+      </a>
+      <a href="terms.html" style="color: white; text-decoration: none; padding: 0.5rem 1rem; border: 2px solid white; border-radius: 25px; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;">
+        <i class="fas fa-file-contract"></i> תקנון שימוש
+      </a>
+    </div>
+    
+    <div class="social" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem;">
+      <a href="https://www.instagram.com/rotem_adini?igsh=MTFrd3VlOXdqdDVubQ%3D%3D&utm_source=qr" target="_blank" class="instagram" aria-label="אינסטגרם" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/share/16WJDMpdpV/?mibextid=wwXIfr" target="_blank" class="facebook" aria-label="פייסבוק" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.tiktok.com/@rotem_adini?_t=ZS-8xCVScFHbYF&_r=1" target="_blank" class="tiktok" aria-label="טיקטוק" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+        <i class="fab fa-tiktok"></i>
+      </a>
+      <a href="https://www.youtube.com/@rotemadini" target="_blank" class="youtube" aria-label="יוטיוב" style="color: white; font-size: 1.5rem; width: 50px; height: 50px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none;">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </div>
+    
+    <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">&copy; 2025 רותם עדיני - משחקי זוגיות. כל הזכויות שמורות.</p>
+  </footer>
+
+  <style>
+  .footer a:hover {
+    background: white !important;
+    color: #8e44ad !important;
+    transform: translateY(-2px);
+  }
+  .social a:hover {
+    background: white !important;
+    color: #8e44ad !important;
+    transform: scale(1.1);
+  }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('Script loaded successfully');
+
+  // Sidebar functionality
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const hamburger = document.querySelector('.hamburger');
+    
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  }
+  
+  // Make toggleSidebar global for onclick
+  window.toggleSidebar = toggleSidebar;
+
+
+
+  // Smooth scrolling for all anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      console.log('Link clicked:', this.getAttribute('href'));
+      
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const target = document.querySelector(targetId);
+      
+      if (target) {
+        console.log('Target found, scrolling to:', targetId);
+        
+        // Close sidebar if open
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        if (hamburger) hamburger.classList.remove('active');
+        
+        // Smooth scroll
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        console.log('Scrolled successfully');
+      } else {
+        console.log('Target not found:', targetId);
+      }
+    });
+  });
+
+  // Mark current page in sidebar
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const sidebarLinks = document.querySelectorAll('.sidebar a');
+  
+  sidebarLinks.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage || 
+        (currentPage === '' && linkPage === 'index.html') ||
+        (currentPage === 'index.html' && linkPage === 'index.html')) {
+      link.style.background = 'var(--gradient-primary)';
+      link.style.color = 'white';
+    }
+  });
+
+  // Newsletter form validation
+  const form = document.getElementById('containingDiv7eaada0');
+  if (form) {
+    const submitBtn = form.querySelector('.fc_button');
+    
+    form.addEventListener('submit', function(e) {
+      const nameInput = form.querySelector('input[name="1"]');
+      const emailInput = form.querySelector('input[name="eMail"]');
+      const confirmCheckbox = form.querySelector('input[name="confirm"]');
+      
+      if (!nameInput.value.trim()) {
+        alert('אנא מלאו את השם');
+        nameInput.focus();
+        e.preventDefault();
+        return false;
+      }
+      
+      if (!emailInput.value.trim()) {
+        alert('אנא מלאו את כתובת המייל');
+        emailInput.focus();
+        e.preventDefault();
+        return false;
+      }
+      
+      if (!confirmCheckbox.checked) {
+        alert('יש לאשר קבלת דיוורים על מנת להירשם');
+        confirmCheckbox.focus();
+        e.preventDefault();
+        return false;
+      }
+      
+      // Loading effect
+      const originalText = submitBtn.value;
+      submitBtn.value = '⏳ שולח...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        submitBtn.value = '✅ נשלח בהצלחה!';
+        setTimeout(() => {
+          submitBtn.value = originalText;
+          submitBtn.disabled = false;
+          form.reset();
+        }, 3000);
+      }, 1500);
+    });
+  }
+
+  // Animate benefit cards
+  const cards = document.querySelectorAll('.benefit-card');
+  if (cards.length > 0) {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 200);
+        }
+      });
+    }, observerOptions);
+    
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease';
+      observer.observe(card);
+    });
+  }
+});
+</script>
+
+</body>
+</html>
