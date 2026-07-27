@@ -94,44 +94,138 @@
       font-variant-numeric: tabular-nums;
     }
 
-    .site-header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,253,249,.88);
-      backdrop-filter: blur(12px);
-    }
-
-    .header-inner {
-      min-height: 64px;
+    /* Header and side menu */
+    #header {
+      min-height: 68px;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: center;
+      position: sticky;
+      top: 0;
+      z-index: 1500;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,253,249,.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(66, 19, 39, 0.08);
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
+    #header h1 {
+      margin: 0;
       color: var(--wine);
+      font-size: 1.45rem;
       font-weight: 900;
+      text-align: center;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
+    .hamburger {
+      position: absolute;
+      right: 24px;
+      width: 31px;
+      height: 23px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--rose), var(--wine));
+      transition: transform .25s ease, opacity .2s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: min(320px, 86vw);
+      height: 100dvh;
+      padding: 86px 24px 30px;
+      overflow-y: auto;
+      z-index: 2100;
+      background: linear-gradient(180deg, #6f2340 0%, #8f3154 52%, #a93e63 100%);
+      box-shadow: -8px 0 32px rgba(40, 9, 23, .28);
+      transition: right .32s cubic-bezier(.4,0,.2,1);
+    }
+
+    .sidebar.open {
+      right: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      margin-bottom: 5px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,.11);
+      border-radius: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.06rem;
+      font-weight: 650;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a:focus-visible {
+      background: rgba(255,255,255,.14);
+      transform: translateX(-3px);
+      outline: none;
+    }
+
+    .sidebar-close {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
-      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
       color: #fff;
-      background: linear-gradient(135deg, var(--rose), var(--wine));
-      box-shadow: var(--shadow-sm);
+      background: rgba(255,255,255,.1);
+      font-size: 1.65rem;
+      cursor: pointer;
     }
 
-    .header-trust {
-      color: var(--muted);
-      font-size: .95rem;
-      font-weight: 700;
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      background: rgba(24, 8, 15, .58);
+      backdrop-filter: blur(2px);
+      transition: opacity .25s ease, visibility .25s ease;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    body.menu-open {
+      overflow: hidden;
     }
 
     .hero {
@@ -671,6 +765,23 @@
 
       .mobile-cta small { display: block; font-weight: 650; opacity: .9; }
     }
+
+    @media (max-width: 520px) {
+      #header {
+        min-height: 62px;
+        padding: 14px 18px;
+      }
+
+      #header h1 {
+        font-size: 1.18rem;
+      }
+
+      .hamburger {
+        right: 18px;
+        width: 28px;
+        height: 21px;
+      }
+    }
   </style>
 
   <script type="application/ld+json">
@@ -699,15 +810,29 @@
     </div>
   </div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="חזרה לדף הבית">
-        <span class="brand-mark">💞</span>
-        <span>משחקי הזוגיות של רותם</span>
-      </a>
-      <span class="header-trust">דיגיטלי • ללא הדפסה • נשאר שלכם לתמיד</span>
-    </div>
+  <header id="header">
+    <h1>🎮 משחקי זוגיות</h1>
+    <button class="hamburger" type="button" aria-label="פתיחת התפריט" aria-expanded="false" aria-controls="sidebar" onclick="toggleSidebar()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="תפריט ראשי">
+    <button class="sidebar-close" type="button" aria-label="סגירת התפריט" onclick="closeSidebar()">×</button>
+    <a href="index.html">🏠 דף הבית</a>
+    <a href="tu-bav.html">💝 מבצע ט״ו באב</a>
+    <a href="forest-game.html">🌲 היער הקסום</a>
+    <a href="race-game.html">💕 מירוץ האהבה</a>
+    <a href="memorygame.html">🧠 משחק הזיכרון הגדול</a>
+    <a href="index.html#newsletter">📧 הרשמה לעדכונים</a>
+    <a href="contact.html">📞 צור קשר</a>
+    <a href="privacy-policy.html">🔒 מדיניות פרטיות</a>
+    <a href="terms.html">📋 תקנון</a>
+  </nav>
+
+  <div class="overlay" id="overlay" onclick="closeSidebar()" aria-hidden="true"></div>
 
   <main>
     <section class="hero">
@@ -980,6 +1105,33 @@
       afterOfferUrl: "index.html"
     };
 
+    function setMenuState(isOpen) {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const hamburger = document.querySelector(".hamburger");
+
+      if (!sidebar || !overlay || !hamburger) return;
+
+      sidebar.classList.toggle("open", isOpen);
+      overlay.classList.toggle("active", isOpen);
+      hamburger.classList.toggle("active", isOpen);
+      hamburger.setAttribute("aria-expanded", String(isOpen));
+      overlay.setAttribute("aria-hidden", String(!isOpen));
+      document.body.classList.toggle("menu-open", isOpen);
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      setMenuState(!sidebar.classList.contains("open"));
+    }
+
+    function closeSidebar() {
+      setMenuState(false);
+    }
+
+    window.toggleSidebar = toggleSidebar;
+    window.closeSidebar = closeSidebar;
+
     function preserveCampaignParams(url) {
       if (!url) return url;
 
@@ -1035,6 +1187,14 @@
       configurePurchaseLinks();
       updateCountdown();
       window.setInterval(updateCountdown, 1000);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeSidebar();
+      });
+
+      document.querySelectorAll("#sidebar a").forEach((link) => {
+        link.addEventListener("click", closeSidebar);
+      });
     });
   </script>
 </body>
